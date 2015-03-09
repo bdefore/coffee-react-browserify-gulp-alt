@@ -1,17 +1,13 @@
-Alt = require 'alt'
+Alt = require '../alt'
 
 ExampleActions = require '../actions/ExampleActions'
 
 class ExampleStore
 
   constructor: ->
-    @foo = 'bar'
-    # @bindActions(ExampleActions)
-    console.log 'examplestore created'
-    @bindAction(ExampleActions.mainLoaded, @onMainLoaded)
+    @bindActions(ExampleActions)
 
   onMainLoaded: (message) ->
-    console.log "Store listener to action heard:", message
-    @foo = 'baz'
+    @foo = message
 
-module.exports = new Alt().createStore(ExampleStore, "ExampleStore")
+module.exports = Alt.createStore(ExampleStore, "ExampleStore")

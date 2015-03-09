@@ -1,12 +1,7 @@
-Alt = require 'alt'
+Alt = require '../alt'
 
 class ExampleActions
-  # constructor: ->
-  #   @generateActions 'mainLoaded'
+  constructor: ->
+    @generateActions 'mainLoaded'
 
-  mainLoaded: (message) ->
-    console.log 'ExampleActions.mainLoaded', message
-    @dispatch(message)
-    console.log 'dispatched'
-
-module.exports = new Alt().createActions(ExampleActions)
+module.exports = Alt.createActions(ExampleActions)

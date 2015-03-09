@@ -9,21 +9,18 @@ Main = React.createClass
   mixins: [ListenerMixin]
 
   getInitialState: ->
-    console.log 'getting initial state'
     ExampleStore.getState()
 
   componentDidMount: ->
     @listenTo ExampleStore, @onChange
     ExampleActions.mainLoaded 'Component has loaded'
-    console.log 'fired when state', @state
 
   onChange: ->
-    console.log 'heard change'
-    @setState @getInitialState
+    @setState @getInitialState()
 
   render: ->
     <div>
-      <div>Main Component</div>
+      <div>Main Component has state loaded from store with message: {@state.foo}</div>
       <RouteHandler />
     </div>
 
